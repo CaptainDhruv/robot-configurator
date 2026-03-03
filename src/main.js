@@ -17,6 +17,7 @@
    FIX v9:  Motors + triangles now always placed flat (yaw-only, no tilt).
             Green socket dots no longer appear inside/below frame joints
             (snap socket on newly placed frame is now marked used).
+   THEME v10: Industrial grey/white/red color scheme.
    ========================================================= */
 
 import * as THREE from "three";
@@ -117,9 +118,9 @@ function showChainToast() {
       top: "20px",
       left: "50%",
       transform: "translateX(-50%)",
-      background: "rgba(8,12,6,0.96)",
-      border: "1.5px solid #6ab040",
-      color: "#a0d878",
+      background: "rgba(15,15,15,0.97)",
+      border: "1.5px solid #cc2200",
+      color: "#e8eef4",
       fontFamily: "'Share Tech Mono', monospace",
       fontSize: "11px",
       letterSpacing: "0.12em",
@@ -127,7 +128,7 @@ function showChainToast() {
       padding: "10px 22px 10px 16px",
       clipPath: "polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%)",
       zIndex: "99997",
-      boxShadow: "0 0 20px rgba(106,176,64,0.25)",
+      boxShadow: "0 0 20px rgba(204,34,0,0.3)",
       display: "flex",
       alignItems: "center",
       gap: "12px",
@@ -141,16 +142,16 @@ function showChainToast() {
   const dots = Array.from(
     { length: queuedIntent.requiredCount },
     (_, i) =>
-      `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;margin:0 2px;background:${i < countPlaced(queuedIntent.requiredType) ? "#6ab040" : "#2a3820"};box-shadow:${i < countPlaced(queuedIntent.requiredType) ? "0 0 5px #6ab040" : "none"}"></span>`,
+      `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;margin:0 2px;background:${i < countPlaced(queuedIntent.requiredType) ? "#cc2200" : "#2a1a18"};box-shadow:${i < countPlaced(queuedIntent.requiredType) ? "0 0 5px #cc2200" : "none"}"></span>`,
   ).join("");
 
   el.innerHTML =
-    `<span style="color:#6ab040;font-size:13px">⟳</span>` +
-    `<span>QUEUED: <strong style="color:#d8e4b8">${queuedIntent.label}</strong></span>` +
-    `<span style="color:#4a5c38">·</span>` +
-    `<span>Place <strong style="color:#f0b040">${needed}</strong> more ${queuedIntent.requiredType.replace("_", " ")}${needed !== 1 ? "s" : ""}</span>` +
+    `<span style="color:#cc2200;font-size:13px">⟳</span>` +
+    `<span>QUEUED: <strong style="color:#e8eef4">${queuedIntent.label}</strong></span>` +
+    `<span style="color:#3a2820">·</span>` +
+    `<span>Place <strong style="color:#e83a1a">${needed}</strong> more ${queuedIntent.requiredType.replace("_", " ")}${needed !== 1 ? "s" : ""}</span>` +
     `<span style="margin-left:4px">${dots}</span>` +
-    `<button id="chain-cancel" style="margin-left:10px;background:none;border:1px solid #4a5c38;color:#4a5c38;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:2px 8px;cursor:pointer;transition:all 0.15s" onmouseover="this.style.color='#ff6060';this.style.borderColor='#ff6060'" onmouseout="this.style.color='#4a5c38';this.style.borderColor='#4a5c38'">✕ CANCEL</button>`;
+    `<button id="chain-cancel" style="margin-left:10px;background:none;border:1px solid #3a2820;color:#3a2820;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:2px 8px;cursor:pointer;transition:all 0.15s" onmouseover="this.style.color='#ff6060';this.style.borderColor='#ff6060'" onmouseout="this.style.color='#3a2820';this.style.borderColor='#3a2820'">✕ CANCEL</button>`;
 
   document.getElementById("chain-cancel")?.addEventListener("click", () => {
     clearQueuedIntent();
@@ -356,7 +357,7 @@ const INSTRUCTIONS = {
   motor: {
     icon: "⚙",
     title: "MOTOR HOUSING",
-    color: "#4a8cd4",
+    color: "#cc2200",
     steps: [
       {
         label: "LOCATE SOCKET",
@@ -372,7 +373,7 @@ const INSTRUCTIONS = {
       },
       {
         label: "CLICK TO PLACE",
-        text: "Click on the socket to confirm placement. The motor locks in. <strong style='color:#6ab040'>Mode stays active</strong> — keep clicking sockets to add more motors. Press <kbd>Esc</kbd> when done.",
+        text: "Click on the socket to confirm placement. The motor locks in. <strong style='color:#e83a1a'>Mode stays active</strong> — keep clicking sockets to add more motors. Press <kbd>Esc</kbd> when done.",
       },
     ],
     tip: "Placement mode stays on after each motor — no need to re-click the button. Press Esc to exit.",
@@ -380,19 +381,19 @@ const INSTRUCTIONS = {
   frame: {
     icon: "▭",
     title: "RECTANGULAR FRAME",
-    color: "#c84030",
+    color: "#909aa8",
     steps: [
       {
         label: "LOCATE SOCKET",
-        text: "Green glowing dots appear on existing frames — these are SOCKET_FRAME connection points where new frames can extend the structure.",
+        text: "White-steel glowing dots appear on existing frames — these are SOCKET_FRAME connection points where new frames can extend the structure.",
       },
       {
         label: "HOVER",
-        text: "Move your cursor over any <strong style='color:#00ff44'>green socket dot</strong>. The frame ghost will preview its position snapped to that point.",
+        text: "Move your cursor over any <strong style='color:#d8e0e8'>white socket dot</strong>. The frame ghost will preview its position snapped to that point.",
       },
       {
         label: "CLICK TO PLACE",
-        text: "Click the socket dot to place the frame. <strong style='color:#6ab040'>Mode stays active</strong> — hover a new socket and click again to keep extending. Press <kbd>Esc</kbd> when done.",
+        text: "Click the socket dot to place the frame. <strong style='color:#e83a1a'>Mode stays active</strong> — hover a new socket and click again to keep extending. Press <kbd>Esc</kbd> when done.",
       },
       {
         label: "EXTEND",
@@ -404,15 +405,15 @@ const INSTRUCTIONS = {
   triangle: {
     icon: "△",
     title: "TRIANGULAR FRAME",
-    color: "#d48030",
+    color: "#8090a0",
     steps: [
       {
         label: "LOCATE SOCKET",
-        text: "Look for <strong style='color:#44ddff'>cyan/teal glowing dots</strong> — these are SOCKET_TRIANGLE connection points on your rectangular frames.",
+        text: "Look for <strong style='color:#8090a0'>grey glowing dots</strong> — these are SOCKET_TRIANGLE connection points on your rectangular frames.",
       },
       {
         label: "HOVER",
-        text: "Move your cursor over any teal socket dot. A ghost triangular frame will preview at that position.",
+        text: "Move your cursor over any grey socket dot. A ghost triangular frame will preview at that position.",
       },
       {
         label: "ROTATE (OPTIONAL)",
@@ -420,7 +421,7 @@ const INSTRUCTIONS = {
       },
       {
         label: "CLICK TO PLACE",
-        text: "Click the socket dot to place. <strong style='color:#6ab040'>Mode stays active</strong> — click another socket to add more triangles. Press <kbd>Esc</kbd> when done.",
+        text: "Click the socket dot to place. <strong style='color:#e83a1a'>Mode stays active</strong> — click another socket to add more triangles. Press <kbd>Esc</kbd> when done.",
       },
     ],
     tip: "Placement mode stays on after each triangle. Press Esc to exit.",
@@ -428,7 +429,7 @@ const INSTRUCTIONS = {
   support: {
     icon: "⊞",
     title: "SUPPORT FRAME",
-    color: "#6ab040",
+    color: "#606870",
     steps: [
       {
         label: "PREREQUISITE",
@@ -436,15 +437,15 @@ const INSTRUCTIONS = {
       },
       {
         label: "FIRST CLICK",
-        text: "Click any <strong style='color:#44ddff'>teal socket dot</strong> on one of your triangular frames — this sets the first anchor point.",
+        text: "Click any <strong style='color:#8090a0'>grey socket dot</strong> on one of your triangular frames — this sets the first anchor point.",
       },
       {
         label: "SECOND CLICK",
-        text: "Click a <strong style='color:#44ddff'>teal socket dot</strong> on a second triangular frame. The support frame bridges between them automatically.",
+        text: "Click a <strong style='color:#8090a0'>grey socket dot</strong> on a second triangular frame. The support frame bridges between them automatically.",
       },
       {
         label: "KEEP GOING",
-        text: "<strong style='color:#6ab040'>Mode stays active</strong> — immediately pick two more sockets to place another support frame. Press <kbd>Esc</kbd> when done.",
+        text: "<strong style='color:#e83a1a'>Mode stays active</strong> — immediately pick two more sockets to place another support frame. Press <kbd>Esc</kbd> when done.",
       },
     ],
     tip: "After each support frame is placed, mode re-arms so you can place another immediately. Press Esc to exit.",
@@ -452,7 +453,7 @@ const INSTRUCTIONS = {
   frameOnSupport: {
     icon: "⇅",
     title: "ATTACH TO SUPPORT",
-    color: "#9060c8",
+    color: "#505860",
     steps: [
       {
         label: "PREREQUISITE",
@@ -460,11 +461,11 @@ const INSTRUCTIONS = {
       },
       {
         label: "LOCATE SOCKET",
-        text: "Look for <strong style='color:#cc44ff'>purple glowing dots</strong> — these are SOCKET_FRAME_SUPPORT points on your support frames.",
+        text: "Look for <strong style='color:#b0bcc8'>steel glowing dots</strong> — these are SOCKET_FRAME_SUPPORT points on your support frames.",
       },
       {
         label: "HOVER TO PREVIEW",
-        text: "Move your cursor over any <strong style='color:#cc44ff'>purple socket dot</strong>. A ghost frame previews its exact placement position.",
+        text: "Move your cursor over any <strong style='color:#b0bcc8'>steel socket dot</strong>. A ghost frame previews its exact placement position.",
       },
       {
         label: "ROTATE (OPTIONAL)",
@@ -472,7 +473,7 @@ const INSTRUCTIONS = {
       },
       {
         label: "CLICK TO PLACE",
-        text: "Click the purple socket dot to confirm. <strong style='color:#6ab040'>Mode stays active</strong> — press <kbd>Esc</kbd> when done.",
+        text: "Click the steel socket dot to confirm. <strong style='color:#e83a1a'>Mode stays active</strong> — press <kbd>Esc</kbd> when done.",
       },
     ],
     tip: "Placement mode stays on after each attached frame. Press Esc to exit.",
@@ -480,7 +481,7 @@ const INSTRUCTIONS = {
   wheel: {
     icon: "◎",
     title: "ADD WHEEL",
-    color: "#00bcd4",
+    color: "#c02010",
     steps: [
       {
         label: "PREREQUISITE",
@@ -488,15 +489,15 @@ const INSTRUCTIONS = {
       },
       {
         label: "LOCATE SOCKET",
-        text: "Look for <strong style='color:#ff9900'>orange glowing dots</strong> — these are WHEEL_SOCKET points on your placed motor housings.",
+        text: "Look for <strong style='color:#ff3010'>hot-red glowing dots</strong> — these are WHEEL_SOCKET points on your placed motor housings.",
       },
       {
         label: "HOVER TO PREVIEW",
-        text: "Move your cursor over any <strong style='color:#ff9900'>orange socket dot</strong>. The wheel ghost will snap and preview its mounted position.",
+        text: "Move your cursor over any <strong style='color:#ff3010'>hot-red socket dot</strong>. The wheel ghost will snap and preview its mounted position.",
       },
       {
         label: "CLICK TO PLACE",
-        text: "Click the orange socket dot to snap the wheel in. <strong style='color:#6ab040'>Mode stays active</strong> — click more sockets to add more wheels. Press <kbd>Esc</kbd> when done.",
+        text: "Click the socket dot to snap the wheel in. <strong style='color:#e83a1a'>Mode stays active</strong> — click more sockets to add more wheels. Press <kbd>Esc</kbd> when done.",
       },
     ],
     tip: "Placement mode stays on after each wheel. Press Esc to exit.",
@@ -586,14 +587,18 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
 /* =========================================================
-   SOCKET MARKERS
+   SOCKET MARKERS — INDUSTRIAL COLORS
    ========================================================= */
 
 const socketGeo = new THREE.SphereGeometry(0.04, 12, 12);
-const frameMat = new THREE.MeshBasicMaterial({ color: 0x00aa00 });
-const motorMat = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-const supportFrameSocketMat = new THREE.MeshBasicMaterial({ color: 0xaa00ff });
-const wheelSocketMat = new THREE.MeshBasicMaterial({ color: 0xff8800 });
+// White-steel for frame sockets
+const frameMat = new THREE.MeshBasicMaterial({ color: 0xd0d8e0 });
+// Warning red for motor sockets
+const motorMat = new THREE.MeshBasicMaterial({ color: 0xdd2200 });
+// Cool steel-grey for support sockets
+const supportFrameSocketMat = new THREE.MeshBasicMaterial({ color: 0x909aaa });
+// Hot red for wheel sockets
+const wheelSocketMat = new THREE.MeshBasicMaterial({ color: 0xff3010 });
 
 let frameMarkers = [];
 let motorMarkers = [];
@@ -713,7 +718,7 @@ async function init() {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.15;
-  renderer.setClearColor(0x0a0d08, 1);
+  renderer.setClearColor(0x0f0f0f, 1);
 
   controls = createControls(camera, renderer.domElement);
   controls.minDistance = 1.0;
@@ -818,8 +823,8 @@ function frameObject(object) {
    ========================================================= */
 
 function setupLights() {
-  scene.background = new THREE.Color(0x0a0d08);
-  scene.fog = new THREE.FogExp2(0x0a0d08, 0.042);
+  scene.background = new THREE.Color(0x0f0f0f);
+  scene.fog = new THREE.FogExp2(0x0f0f0f, 0.042);
 
   scene.add(new THREE.HemisphereLight(0xffffff, 0x444444, 0.55));
 
@@ -850,13 +855,13 @@ function setupGrid() {
 
   const gridY = lowestY;
 
-  const gridMajor = new THREE.GridHelper(60, 60, 0x1e3018, 0x162410);
+  const gridMajor = new THREE.GridHelper(60, 60, 0x2a2a2a, 0x1e1e1e);
   gridMajor.position.y = gridY;
   gridMajor.material.transparent = true;
   gridMajor.material.opacity = 0.65;
   scene.add(gridMajor);
 
-  const gridMinor = new THREE.GridHelper(60, 240, 0x0e1a0a, 0x0e1a0a);
+  const gridMinor = new THREE.GridHelper(60, 240, 0x181818, 0x181818);
   gridMinor.position.y = gridY - 0.001;
   gridMinor.material.transparent = true;
   gridMinor.material.opacity = 0.4;
@@ -864,7 +869,7 @@ function setupGrid() {
 
   const groundGeo = new THREE.PlaneGeometry(60, 60);
   const groundMat = new THREE.MeshBasicMaterial({
-    color: 0x080c06,
+    color: 0x0d0d0d,
     transparent: true,
     opacity: 0.92,
     depthWrite: false,
@@ -902,15 +907,15 @@ function bindUI() {
     position: "fixed",
     pointerEvents: "none",
     display: "none",
-    background: "rgba(10,13,8,0.93)",
-    border: "1px solid #d4922a",
-    color: "#f0b040",
+    background: "rgba(15,15,15,0.95)",
+    border: "1px solid #cc2200",
+    color: "#e8eef4",
     fontFamily: "'Share Tech Mono', monospace",
     fontSize: "12px",
     letterSpacing: "0.08em",
     padding: "8px 14px",
     clipPath: "polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,0 100%)",
-    boxShadow: "0 0 14px rgba(212,146,42,0.25)",
+    boxShadow: "0 0 14px rgba(204,34,0,0.25)",
     zIndex: "99998",
     lineHeight: "1.7",
     whiteSpace: "nowrap",
@@ -1092,26 +1097,26 @@ function printDesign() {
     .print-meta { text-align: right; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: #555; line-height: 1.7; letter-spacing: 0.05em; }
     .status-badge { display: inline-block; padding: 2px 10px; font-size: 9px; font-family: 'Orbitron', sans-serif; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; border: 1.5px solid; margin-top: 4px; }
     .status-final  { color: #166534; border-color: #166534; background: #f0fdf4; }
-    .status-draft  { color: #92400e; border-color: #b45309; background: #fffbeb; }
-    .main-view-wrap { width: 100%; border: 2px solid #222; margin-bottom: 14px; background: #0a0d08; overflow: hidden; position: relative; }
+    .status-draft  { color: #7f1d1d; border-color: #cc2200; background: #fff5f5; }
+    .main-view-wrap { width: 100%; border: 2px solid #222; margin-bottom: 14px; background: #0f0f0f; overflow: hidden; position: relative; }
     .main-view-wrap img { width: 100%; display: block; max-height: 320px; object-fit: contain; }
-    .main-view-label { position: absolute; top: 8px; left: 12px; font-family: 'Orbitron', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.2em; color: #d4922a; background: rgba(0,0,0,0.65); padding: 3px 8px; }
-    .section-title { font-family: 'Orbitron', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; color: #111; text-transform: uppercase; border-left: 4px solid #d4922a; padding-left: 10px; margin-bottom: 10px; }
+    .main-view-label { position: absolute; top: 8px; left: 12px; font-family: 'Orbitron', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.2em; color: #cc2200; background: rgba(0,0,0,0.65); padding: 3px 8px; }
+    .section-title { font-family: 'Orbitron', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; color: #111; text-transform: uppercase; border-left: 4px solid #cc2200; padding-left: 10px; margin-bottom: 10px; }
     .angles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 18px; }
-    .angle-card { border: 1.5px solid #222; background: #0a0d08; overflow: hidden; position: relative; }
-    .angle-label { font-family: 'Orbitron', sans-serif; font-size: 7px; font-weight: 700; letter-spacing: 0.18em; color: #d4922a; background: rgba(0,0,0,0.75); padding: 3px 6px; position: absolute; top: 0; left: 0; z-index: 1; }
+    .angle-card { border: 1.5px solid #222; background: #0f0f0f; overflow: hidden; position: relative; }
+    .angle-label { font-family: 'Orbitron', sans-serif; font-size: 7px; font-weight: 700; letter-spacing: 0.18em; color: #cc2200; background: rgba(0,0,0,0.75); padding: 3px 6px; position: absolute; top: 0; left: 0; z-index: 1; }
     .angle-card img { width: 100%; display: block; max-height: 130px; object-fit: contain; }
     .tables-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
     .table-card { border: 1.5px solid #222; }
-    .table-card-header { background: #1a1a1a; color: #d4922a; font-family: 'Orbitron', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.18em; padding: 6px 12px; text-transform: uppercase; }
+    .table-card-header { background: #1a1a1a; color: #cc2200; font-family: 'Orbitron', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.18em; padding: 6px 12px; text-transform: uppercase; }
     table { width: 100%; border-collapse: collapse; font-size: 12px; }
     td { padding: 6px 12px; border-bottom: 1px solid #e5e5e5; font-family: 'Rajdhani', sans-serif; letter-spacing: 0.03em; }
     td:last-child { text-align: right; font-family: 'Share Tech Mono', monospace; font-weight: 700; }
     tr:last-child td { border-bottom: none; }
     tr:nth-child(even) td { background: #fafafa; }
-    .total-bar { display: flex; justify-content: space-between; align-items: center; border: 2px solid #1a1a1a; padding: 10px 20px; margin-bottom: 16px; background: #f8f8f0; }
+    .total-bar { display: flex; justify-content: space-between; align-items: center; border: 2px solid #1a1a1a; padding: 10px 20px; margin-bottom: 16px; background: #f8f8f8; }
     .total-label { font-family: 'Orbitron', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #111; }
-    .total-value { font-family: 'Orbitron', sans-serif; font-size: 22px; font-weight: 900; color: #b45309; letter-spacing: 0.06em; }
+    .total-value { font-family: 'Orbitron', sans-serif; font-size: 22px; font-weight: 900; color: #cc2200; letter-spacing: 0.06em; }
     .print-footer { border-top: 1px solid #ccc; padding-top: 10px; display: flex; justify-content: space-between; font-family: 'Share Tech Mono', monospace; font-size: 9px; color: #888; letter-spacing: 0.08em; }
     @media print { body { padding: 12px 16px; } }
   </style>
@@ -1227,8 +1232,8 @@ function initShortcutBar() {
     left: "300px",
     right: "300px",
     height: "34px",
-    background: "rgba(8,12,6,0.94)",
-    borderTop: "1px solid rgba(212,146,42,0.2)",
+    background: "rgba(15,15,15,0.96)",
+    borderTop: "1px solid rgba(204,34,0,0.2)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -1247,13 +1252,13 @@ function initShortcutBar() {
         from { opacity:0; transform:translateY(4px); }
         to   { opacity:1; transform:translateY(0); }
       }
-      .sb-sep { width:1px; height:16px; background:rgba(212,146,42,0.15); flex-shrink:0; margin:0; }
+      .sb-sep { width:1px; height:16px; background:rgba(204,34,0,0.15); flex-shrink:0; margin:0; }
       .sb-item { display:flex; align-items:center; gap:6px; padding:0 14px; height:100%; animation:sbItemIn 0.18s ease both; cursor:default; flex-shrink:0; transition: background 0.15s; }
-      .sb-item:hover { background:rgba(212,146,42,0.06); }
-      .sb-key { font-family:'Orbitron',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.08em; color:#d4922a; background:rgba(212,146,42,0.12); border:1px solid rgba(212,146,42,0.3); padding:2px 6px; white-space:nowrap; line-height:1.4; }
-      .sb-action { font-family:'Share Tech Mono',monospace; font-size:9.5px; letter-spacing:0.06em; color:#6a7e54; text-transform:uppercase; white-space:nowrap; }
+      .sb-item:hover { background:rgba(204,34,0,0.06); }
+      .sb-key { font-family:'Orbitron',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.08em; color:#cc2200; background:rgba(204,34,0,0.12); border:1px solid rgba(204,34,0,0.3); padding:2px 6px; white-space:nowrap; line-height:1.4; }
+      .sb-action { font-family:'Share Tech Mono',monospace; font-size:9.5px; letter-spacing:0.06em; color:#5a6268; text-transform:uppercase; white-space:nowrap; }
       .sb-mode-label { font-family:'Orbitron',sans-serif; font-size:8px; font-weight:700; letter-spacing:0.18em; padding:0 16px; text-transform:uppercase; flex-shrink:0; white-space:nowrap; }
-      .sb-chain-label { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:0.1em; color:#6ab040; padding:0 12px; flex-shrink:0; white-space:nowrap; display:flex; align-items:center; gap:6px; }
+      .sb-chain-label { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:0.1em; color:#cc2200; padding:0 12px; flex-shrink:0; white-space:nowrap; display:flex; align-items:center; gap:6px; }
     `;
     document.head.appendChild(s);
   }
@@ -1268,20 +1273,20 @@ function updateShortcutBar() {
   const mode = placementMode || "idle";
 
   const modeColors = {
-    idle: { color: "#4a5c38", label: "BROWSE" },
-    frame: { color: "#c84030", label: "FRAME ●" },
-    motor: { color: "#4a8cd4", label: "MOTOR ●" },
-    triangle: { color: "#d48030", label: "TRIANGLE ●" },
-    support: { color: "#6ab040", label: "SUPPORT ●" },
-    frameOnSupport: { color: "#9060c8", label: "ATTACH ●" },
-    wheel: { color: "#00bcd4", label: "WHEEL ●" },
+    idle: { color: "#5a6268", label: "BROWSE" },
+    frame: { color: "#909aa8", label: "FRAME ●" },
+    motor: { color: "#cc2200", label: "MOTOR ●" },
+    triangle: { color: "#808898", label: "TRIANGLE ●" },
+    support: { color: "#606870", label: "SUPPORT ●" },
+    frameOnSupport: { color: "#505860", label: "ATTACH ●" },
+    wheel: { color: "#e83a1a", label: "WHEEL ●" },
   };
 
   const mc = modeColors[mode] || modeColors.idle;
   const modeLabel = document.createElement("div");
   modeLabel.className = "sb-mode-label";
   modeLabel.style.color = mc.color;
-  modeLabel.style.borderRight = `1px solid rgba(212,146,42,0.15)`;
+  modeLabel.style.borderRight = `1px solid rgba(204,34,0,0.15)`;
   modeLabel.textContent = mc.label;
   shortcutBarEl.appendChild(modeLabel);
 
@@ -1291,9 +1296,9 @@ function updateShortcutBar() {
     const placed = countPlaced(queuedIntent.requiredType);
     const need = queuedIntent.requiredCount - placed;
     chainEl.innerHTML =
-      `<span style="color:#6ab040">⟳</span>` +
+      `<span style="color:#cc2200">⟳</span>` +
       `<span>QUEUED: ${queuedIntent.label} — ${need} more needed</span>`;
-    chainEl.style.borderRight = "1px solid rgba(212,146,42,0.15)";
+    chainEl.style.borderRight = "1px solid rgba(204,34,0,0.15)";
     shortcutBarEl.appendChild(chainEl);
   }
 
@@ -1349,9 +1354,9 @@ function showHudMessage(text) {
     bottom: "32px",
     left: "50%",
     transform: "translateX(-50%)",
-    background: "rgba(10,13,8,0.92)",
-    border: "1px solid #d4922a",
-    color: "#f0b040",
+    background: "rgba(15,15,15,0.94)",
+    border: "1px solid #cc2200",
+    color: "#e8eef4",
     fontFamily: "'Share Tech Mono', monospace",
     fontSize: "12px",
     letterSpacing: "0.15em",
@@ -1359,7 +1364,7 @@ function showHudMessage(text) {
     padding: "10px 28px",
     clipPath: "polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%)",
     zIndex: "99999",
-    boxShadow: "0 0 18px rgba(212,146,42,0.3)",
+    boxShadow: "0 0 18px rgba(204,34,0,0.3)",
     animation: "hudMsgIn 0.3s ease both",
   });
   document.body.appendChild(el);
@@ -1399,7 +1404,7 @@ function showPopup(message, actionLabel, actionFn) {
   Object.assign(overlay.style, {
     position: "fixed",
     inset: "0",
-    background: "rgba(0,0,0,0.65)",
+    background: "rgba(0,0,0,0.7)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -1408,16 +1413,16 @@ function showPopup(message, actionLabel, actionFn) {
 
   const box = document.createElement("div");
   Object.assign(box.style, {
-    background: "#0d1209",
-    border: "2px solid #d4922a",
+    background: "#111111",
+    border: "2px solid #cc2200",
     padding: "32px 40px",
     maxWidth: "460px",
     width: "90%",
     fontFamily: "'Share Tech Mono', monospace",
-    color: "#f0b040",
+    color: "#e8eef4",
     textAlign: "center",
     clipPath: "polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%)",
-    boxShadow: "0 0 40px rgba(212,146,42,0.25)",
+    boxShadow: "0 0 40px rgba(204,34,0,0.25)",
     position: "relative",
   });
 
@@ -1426,7 +1431,7 @@ function showPopup(message, actionLabel, actionFn) {
   Object.assign(title.style, {
     fontSize: "10px",
     letterSpacing: "0.2em",
-    color: "#d4922a",
+    color: "#cc2200",
     marginBottom: "16px",
     fontWeight: "700",
     fontFamily: "'Orbitron', sans-serif",
@@ -1437,7 +1442,7 @@ function showPopup(message, actionLabel, actionFn) {
   Object.assign(msg.style, {
     fontSize: "13px",
     lineHeight: "1.6",
-    color: "#e8d5a0",
+    color: "#c0c8d0",
     marginBottom: "24px",
     letterSpacing: "0.04em",
   });
@@ -1454,9 +1459,9 @@ function showPopup(message, actionLabel, actionFn) {
     const b = document.createElement("button");
     b.textContent = label;
     Object.assign(b.style, {
-      background: primary ? "#d4922a" : "transparent",
-      border: "1.5px solid #d4922a",
-      color: primary ? "#0d1209" : "#d4922a",
+      background: primary ? "#cc2200" : "transparent",
+      border: "1.5px solid #cc2200",
+      color: primary ? "#111111" : "#cc2200",
       fontFamily: "'Orbitron', sans-serif",
       fontSize: "10px",
       letterSpacing: "0.2em",
@@ -1466,12 +1471,12 @@ function showPopup(message, actionLabel, actionFn) {
       transition: "background 0.15s, color 0.15s",
     });
     b.onmouseover = () => {
-      b.style.background = "#d4922a";
-      b.style.color = "#0d1209";
+      b.style.background = "#cc2200";
+      b.style.color = "#111111";
     };
     b.onmouseout = () => {
-      b.style.background = primary ? "#d4922a" : "transparent";
-      b.style.color = primary ? "#0d1209" : "#d4922a";
+      b.style.background = primary ? "#cc2200" : "transparent";
+      b.style.color = primary ? "#111111" : "#cc2200";
     };
     return b;
   }
@@ -1484,7 +1489,7 @@ function showPopup(message, actionLabel, actionFn) {
     const orLabel = document.createElement("span");
     orLabel.textContent = "—  or  —";
     Object.assign(orLabel.style, {
-      color: "#7a6a40",
+      color: "#3a2820",
       fontSize: "10px",
       alignSelf: "center",
       letterSpacing: "0.12em",
@@ -1682,36 +1687,38 @@ function rebuildSocketMarkers() {
   });
 }
 
-const MAT_FRAME_ACTIVE = new THREE.MeshBasicMaterial({ color: 0x00ff44 });
+// ── Active socket materials — INDUSTRIAL PALETTE ──────────────────────────
+const MAT_FRAME_ACTIVE = new THREE.MeshBasicMaterial({ color: 0xe8eef4 }); // bright white-steel
 const MAT_FRAME_DIM = new THREE.MeshBasicMaterial({
-  color: 0x004411,
+  color: 0x2a2e32,
   transparent: true,
-  opacity: 0.18,
+  opacity: 0.22,
 });
-const MAT_MOTOR_ACTIVE = new THREE.MeshBasicMaterial({ color: 0xff2200 });
+const MAT_MOTOR_ACTIVE = new THREE.MeshBasicMaterial({ color: 0xff2200 }); // warning red
 const MAT_MOTOR_DIM = new THREE.MeshBasicMaterial({
-  color: 0x330a00,
+  color: 0x2a0a00,
   transparent: true,
   opacity: 0.18,
 });
-const MAT_SUPPORT_ACTIVE = new THREE.MeshBasicMaterial({ color: 0xcc44ff });
+const MAT_SUPPORT_ACTIVE = new THREE.MeshBasicMaterial({ color: 0xb0bcc8 }); // cool steel
 const MAT_SUPPORT_DIM = new THREE.MeshBasicMaterial({
-  color: 0x220033,
+  color: 0x1e2228,
   transparent: true,
   opacity: 0.18,
 });
-const MAT_WHEEL_ACTIVE = new THREE.MeshBasicMaterial({ color: 0xff9900 });
+const MAT_WHEEL_ACTIVE = new THREE.MeshBasicMaterial({ color: 0xff3010 }); // hot red
 const MAT_WHEEL_DIM = new THREE.MeshBasicMaterial({
-  color: 0x331f00,
+  color: 0x280a00,
   transparent: true,
   opacity: 0.18,
 });
-const MAT_TRI_ACTIVE = new THREE.MeshBasicMaterial({ color: 0x44ddff });
+const MAT_TRI_ACTIVE = new THREE.MeshBasicMaterial({ color: 0x8090a0 }); // mid steel
 const MAT_TRI_DIM = new THREE.MeshBasicMaterial({
-  color: 0x001f33,
+  color: 0x181c20,
   transparent: true,
   opacity: 0.18,
 });
+// ──────────────────────────────────────────────────────────────────────────
 
 function addMarker(socket, list, mat) {
   const m = new THREE.Mesh(socketGeo, mat);
@@ -1943,7 +1950,6 @@ function startFrameOnSupportPlacement() {
    ========================================================= */
 
 function restartPlacementMode(mode) {
-  // Remove old ghost but keep placementMode and active-mode button intact
   if (ghost) scene.remove(ghost);
   ghost = null;
   motorRotationGroup = null;
@@ -2103,11 +2109,6 @@ function onMouseMove(e) {
   const socket = hit.object.userData.socket;
   socket.updateMatrixWorld(true);
 
-  // ── FLAT PLACEMENT RULE — GHOST PREVIEW ───────────────────────────────
-  // Extract only the Y-yaw from the socket; discard pitch/roll so ghost
-  // never tilts. For motor: R-key rotation lives in motorRotationGroup.
-  // For triangle: R-key rotation is stored in ghost.userData.userRotY so
-  // we don't overwrite it when we set ghost.quaternion each frame.
   const socketWorldPos = new THREE.Vector3();
   const socketWorldQuat = new THREE.Quaternion();
   socket.getWorldPosition(socketWorldPos);
@@ -2119,19 +2120,16 @@ function onMouseMove(e) {
   );
 
   if (placementMode === "motor") {
-    // Motor: ghost position/orientation set directly; R-key rotates motorRotationGroup
     ghost.position.copy(socketWorldPos);
     ghost.rotation.set(0, socketEuler.y, 0);
     ghost.scale.set(1, 1, 1);
     applySocketDepth(ghost, socket, 0.05);
   } else {
-    // Triangle: preserve accumulated R-key Y rotation stored in userData
     const userRotY = ghost.userData.userRotY ?? 0;
     ghost.position.copy(socketWorldPos);
     ghost.rotation.set(0, socketEuler.y + userRotY, 0);
     ghost.scale.set(1, 1, 1);
   }
-  // ──────────────────────────────────────────────────────────────────────
 }
 
 /* =========================================================
@@ -2175,7 +2173,6 @@ function onClick(e) {
     const socket = hit.object.userData.socket;
     placeFrameOnSupport(socket, frameOnSupportRotationSteps);
 
-    // Reset rotation for the next placement but stay in mode
     frameOnSupportRotationSteps = 0;
     restartPlacementMode("frameOnSupport");
     checkQueuedIntent();
@@ -2197,7 +2194,6 @@ function onClick(e) {
 
     if (supportFirstSocket !== socket) {
       placeSupportBridge(supportFirstSocket, socket);
-      // Re-arm for another support frame
       restartPlacementMode("support");
       checkQueuedIntent();
       return;
@@ -2212,7 +2208,6 @@ function onClick(e) {
     if (usedSockets.has(socket.uuid)) return;
     placeWheel(socket);
 
-    // Re-build markers first so we know if any remain
     rebuildSocketMarkers();
     applySocketHighlights();
 
@@ -2253,7 +2248,6 @@ function onClick(e) {
     if (usedSockets.has(socket.uuid)) return;
     placeMotor(socket);
 
-    // Re-build markers first so we know if any remain
     rebuildSocketMarkers();
     applySocketHighlights();
 
@@ -2301,10 +2295,6 @@ function placeFrameAtPosition(x, z) {
 function placeFrame(socket) {
   if (usedSockets.has(socket.uuid)) return;
 
-  // Determine which socket on the NEW frame will be the snap point.
-  // e.g. if user clicked SOCKET_FRAME_A on existing frame, the new frame
-  // snaps via SOCKET_FRAME_C — that inward socket must also be marked used
-  // so it doesn't show up as a floating available green dot.
   const clickedSuffix = socket.name
     .replace(/^SOCKET_FRAME_/i, "")
     .toUpperCase();
@@ -2325,12 +2315,9 @@ function placeFrame(socket) {
 
   scene.updateMatrixWorld(true);
 
-  // Mark clicked socket (on existing frame) as used.
   usedSockets.add(socket.uuid);
   const usedUuids = [socket.uuid];
 
-  // Mark the snap socket (on the new frame) as used so it won't render
-  // as an available green dot inside/below the structure.
   let snapFound = false;
   mount.traverse((o) => {
     if (snapFound) return;
@@ -2346,8 +2333,6 @@ function placeFrame(socket) {
     }
   });
 
-  // Fallback: if name match failed, mark whichever SOCKET_FRAME_* on the
-  // new frame is geometrically closest to the clicked socket world position.
   if (!snapFound) {
     const clickedPos = new THREE.Vector3();
     socket.getWorldPosition(clickedPos);
@@ -2386,21 +2371,16 @@ function placeMotor(socket) {
   socket.getWorldPosition(socketPos);
   socket.getWorldQuaternion(socketQuat);
 
-  // ── FLAT PLACEMENT RULE ────────────────────────────────────────────────
-  // Extract only the Y (yaw) from the socket quaternion so the motor
-  // always sits flat on the frame surface — never tilts or stands up.
   const socketEuler = new THREE.Euler().setFromQuaternion(socketQuat, "YXZ");
   const flatQuat = new THREE.Quaternion().setFromEuler(
     new THREE.Euler(0, socketEuler.y, 0, "YXZ"),
   );
-  // ──────────────────────────────────────────────────────────────────────
 
   mount.position.copy(socketPos);
   mount.quaternion.copy(flatQuat);
 
   applySocketDepth(mount, socket, 0.05);
 
-  // Use motorRotationGroup directly (preserves select/delete mesh hierarchy)
   makeSolid(motorRotationGroup);
   mount.add(motorRotationGroup);
 
@@ -2521,22 +2501,12 @@ function placeTriangle(socket) {
   socket.getWorldPosition(socketPos);
   socket.getWorldQuaternion(socketQuat);
 
-  // ── FLAT PLACEMENT RULE ────────────────────────────────────────────────
-  // Triangular frames must always lay flat as horizontal diagonal braces.
-  // Extract ONLY the Y (yaw) from the socket quaternion — discard any
-  // pitch or roll the socket node may have — so the triangle never stands
-  // up vertically regardless of socket orientation.
   const socketEuler = new THREE.Euler().setFromQuaternion(socketQuat, "YXZ");
-
-  // Read accumulated R-key rotation from ghost.userData.userRotY
-  // (ghost.quaternion gets overwritten each frame by flat-preview code)
   const userRotationY = ghost?.userData?.userRotY ?? 0;
-  // ──────────────────────────────────────────────────────────────────────
 
   const mount = new THREE.Group();
   mount.userData = { isMount: true, socket, type: "triangle_frame" };
 
-  // Only Y rotation — triangle always flat in the horizontal plane
   mount.rotation.set(0, socketEuler.y + userRotationY, 0);
 
   if (connector) {
@@ -2853,7 +2823,7 @@ function setHoverMesh(mesh, mount) {
     if (hoveredMesh === selectedMesh) {
       hoveredOrigEm.copy(selectedOrigEm);
     } else {
-      hoveredOrigEm = setMeshEmissive(hoveredMesh, 0x1a3a1a);
+      hoveredOrigEm = setMeshEmissive(hoveredMesh, 0x1a1a1a);
     }
   }
 }
@@ -2869,7 +2839,7 @@ function selectMesh(mesh, mount) {
   if (selectedMesh) {
     if (selectedMesh === hoveredMesh) {
       restoreMeshEmissive(selectedMesh, selectedOrigEm);
-      setMeshEmissive(selectedMesh, 0x1a3a1a);
+      setMeshEmissive(selectedMesh, 0x1a1a1a);
     } else {
       restoreMeshEmissive(selectedMesh, selectedOrigEm);
     }
@@ -2883,10 +2853,10 @@ function selectMesh(mesh, mount) {
     if (selectedMesh === hoveredMesh) {
       selectedOrigEm = hoveredOrigEm.clone();
     } else {
-      selectedOrigEm = setMeshEmissive(selectedMesh, 0x3a3a00);
+      selectedOrigEm = setMeshEmissive(selectedMesh, 0x2a1a10);
     }
     if (selectedMesh?.material?.emissive) {
-      selectedMesh.material.emissive.set(0x3a3a00);
+      selectedMesh.material.emissive.set(0x2a1a10);
     }
   }
 }
@@ -2949,7 +2919,6 @@ function onKeyDown(e) {
     if (placementMode === "motor") motorRotationGroup?.rotateY(Math.PI / 2);
     if (placementMode === "triangle" && ghost) {
       ghost.userData.userRotY = (ghost.userData.userRotY ?? 0) + Math.PI / 2;
-      // Immediately rotate the ghost visually — don't wait for next mousemove
       ghost.rotation.y = ghost.userData.userRotY;
     }
     if (placementMode === "support" && ghost) ghost.rotateY(Math.PI / 2);
@@ -3003,12 +2972,12 @@ function onKeyDown(e) {
    ========================================================= */
 
 const LEGEND_MODE_MAP = {
-  frame: "green",
+  frame: "white",
   motor: "red",
-  triangle: "cyan",
-  support: "cyan",
-  frameOnSupport: "purple",
-  wheel: "orange",
+  triangle: "grey",
+  support: "grey",
+  frameOnSupport: "steel",
+  wheel: "hotred",
 };
 
 function initColorLegend() {
@@ -3044,16 +3013,14 @@ function updateLegendHighlight() {
 
   legend.classList.add("mode-active");
   legend.querySelectorAll(".legend-item").forEach((el) => {
-    const dot = el.querySelector(".legend-dot");
-    if (!dot) return;
     const strong = el.querySelector("strong");
     const colorWord = strong?.textContent?.trim().toUpperCase();
     const colorMap = {
-      GREEN: "green",
+      WHITE: "white",
       RED: "red",
-      CYAN: "cyan",
-      PURPLE: "purple",
-      ORANGE: "orange",
+      GREY: "grey",
+      STEEL: "steel",
+      "HOT RED": "hotred",
     };
     el.classList.toggle(
       "legend-relevant",
@@ -3137,7 +3104,7 @@ function showIdleArrows() {
 
   btnEl.style.transition = "box-shadow 0.4s ease";
   btnEl.style.boxShadow =
-    "0 0 18px rgba(212,146,42,0.45), inset 0 0 12px rgba(212,146,42,0.08)";
+    "0 0 18px rgba(204,34,0,0.45), inset 0 0 12px rgba(204,34,0,0.08)";
 
   container.appendChild(arrow);
   idleArrowsShown = true;
@@ -3205,8 +3172,8 @@ function showTooltip(mount, clientX, clientY) {
   const costStr = cost != null ? `₹${cost.toLocaleString()}` : "—";
 
   tooltipEl.innerHTML =
-    `<span style="color:#d4922a;font-weight:700;letter-spacing:0.15em;font-family:'Orbitron',sans-serif;font-size:10px">${label.toUpperCase()}</span><br>` +
-    `<span style="color:#a89060">Unit cost: </span><span style="color:#f0d080">${costStr}</span>`;
+    `<span style="color:#cc2200;font-weight:700;letter-spacing:0.15em;font-family:'Orbitron',sans-serif;font-size:10px">${label.toUpperCase()}</span><br>` +
+    `<span style="color:#606870">Unit cost: </span><span style="color:#d0d8e0">${costStr}</span>`;
 
   const TW = tooltipEl.offsetWidth || 180;
   const TH = tooltipEl.offsetHeight || 52;

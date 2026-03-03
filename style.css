@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════
-   ROBOT CONFIGURATOR — AEROSPACE / DEFENSE THEME
-   Deep Navy · Refined Gold · Silver Chrome
+   ROBOT CONFIGURATOR — INDUSTRIAL / HEAVY MACHINERY THEME
+   Gunmetal · Steel White · Warning Red
    ═══════════════════════════════════════════════════ */
 
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600;700;800&display=swap");
@@ -19,12 +19,12 @@ body {
   width: 100%;
   overflow: hidden;
   font-family: "Rajdhani", sans-serif;
-  background: #060b14;
-  color: #a8b8cc;
+  background: #0f0f0f;
+  color: #b0b8c0;
   cursor: crosshair;
 }
 
-/* ── SUBTLE NOISE OVERLAY ── */
+/* ── SUBTLE SCANLINE OVERLAY ── */
 body::after {
   content: "";
   position: fixed;
@@ -33,8 +33,8 @@ body::after {
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 0, 0, 0.06) 2px,
-    rgba(0, 0, 0, 0.06) 4px
+    rgba(0, 0, 0, 0.07) 2px,
+    rgba(0, 0, 0, 0.07) 4px
   );
   pointer-events: none;
   z-index: 9999;
@@ -42,54 +42,54 @@ body::after {
 
 :root {
   /* ── Base surfaces ── */
-  --bg-base: #060b14;
-  --bg-panel: #080e1a;
-  --bg-panel-r: #070c17;
-  --bg-row: #0c1526;
-  --bg-row-h: #101d30;
+  --bg-base: #0f0f0f;
+  --bg-panel: #141414;
+  --bg-panel-r: #111111;
+  --bg-row: #1a1a1a;
+  --bg-row-h: #222222;
 
   /* ── Borders ── */
-  --border: #1a2a3f;
-  --border-hi: #2a4060;
-  --border-gold: #6b5020;
+  --border: #2a2a2a;
+  --border-hi: #3a3a3a;
+  --border-red: #4a1008;
 
   /* ── Text ── */
-  --text-hi: #dce8f5;
-  --text-mid: #7090b0;
-  --text-lo: #3a5070;
-  --text-gold: #c8982a;
-  --text-danger: #c84040;
+  --text-hi: #e8eaec;
+  --text-mid: #7a8490;
+  --text-lo: #404850;
+  --text-red: #cc3320;
+  --text-danger: #e03020;
 
-  /* ── Gold accent — refined, not garish ── */
-  --gold: #c8982a;
-  --gold-bright: #e8b840;
-  --gold-dim: rgba(200, 152, 42, 0.1);
-  --gold-glow: rgba(200, 152, 42, 0.22);
-  --gold-border: rgba(200, 152, 42, 0.3);
+  /* ── Red accent — industrial warning red ── */
+  --red: #cc2200;
+  --red-bright: #e83a1a;
+  --red-dim: rgba(204, 34, 0, 0.1);
+  --red-glow: rgba(204, 34, 0, 0.22);
+  --red-border: rgba(204, 34, 0, 0.35);
 
-  /* ── Silver / chrome ── */
-  --silver: #8fa8c0;
-  --silver-dim: rgba(143, 168, 192, 0.1);
-  --silver-hi: #b8ccd8;
+  /* ── Steel / chrome ── */
+  --steel: #8090a0;
+  --steel-dim: rgba(128, 144, 160, 0.1);
+  --steel-hi: #c0ccd8;
+  --steel-bright: #d8e0e8;
 
-  /* ── Electric blue ── */
-  --blue: #2a7ad4;
-  --blue-bright: #4a9af0;
-  --blue-dim: rgba(42, 122, 212, 0.1);
+  /* ── Gunmetal ── */
+  --gun: #3a4048;
+  --gun-dim: rgba(58, 64, 72, 0.15);
 
-  /* ── Component colours ── */
-  --c-motor: #3a8de8;
-  --c-motor-d: rgba(58, 141, 232, 0.1);
-  --c-frame: #a03428;
-  --c-frame-d: rgba(160, 52, 40, 0.1);
-  --c-tri: #c07828;
-  --c-tri-d: rgba(192, 120, 40, 0.1);
-  --c-sup: #3a9058;
-  --c-sup-d: rgba(58, 144, 88, 0.1);
-  --c-att: #7848b8;
-  --c-att-d: rgba(120, 72, 184, 0.1);
-  --c-wheel: #189ab4;
-  --c-wheel-d: rgba(24, 154, 180, 0.1);
+  /* ── Component colours — industrial palette ── */
+  --c-motor: #cc2200;
+  --c-motor-d: rgba(204, 34, 0, 0.12);
+  --c-frame: #7a8090;
+  --c-frame-d: rgba(122, 128, 144, 0.12);
+  --c-tri: #a0a8b0;
+  --c-tri-d: rgba(160, 168, 176, 0.12);
+  --c-sup: #606870;
+  --c-sup-d: rgba(96, 104, 112, 0.12);
+  --c-att: #505860;
+  --c-att-d: rgba(80, 88, 96, 0.12);
+  --c-wheel: #c02010;
+  --c-wheel-d: rgba(192, 32, 16, 0.12);
 
   --panel-w: 300px;
   --font-hud: "Orbitron", sans-serif;
@@ -191,11 +191,11 @@ body::after {
 @keyframes inst-border-pulse {
   0%,
   100% {
-    border-color: var(--inst-color, #c8982a);
+    border-color: var(--inst-color, #cc2200);
     box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   }
   50% {
-    box-shadow: 0 0 12px var(--inst-color, rgba(200, 152, 42, 0.25));
+    box-shadow: 0 0 12px var(--inst-color, rgba(204, 34, 0, 0.25));
   }
 }
 @keyframes glyph-pop {
@@ -256,29 +256,28 @@ body::after {
 }
 
 .panel-left {
-  background: linear-gradient(160deg, #0a1220 0%, #080e1a 100%);
+  background: linear-gradient(160deg, #181818 0%, #141414 100%);
   border-right: 1px solid var(--border);
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
-  /* Subtle inner glow on right edge */
-  box-shadow: inset -1px 0 0 rgba(42, 122, 212, 0.08);
+  box-shadow: inset -1px 0 0 rgba(204, 34, 0, 0.06);
 }
 .panel-right {
-  background: linear-gradient(160deg, #09111f 0%, #070c17 100%);
+  background: linear-gradient(160deg, #161616 0%, #111111 100%);
   border-left: 1px solid var(--border);
   clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 0 12px);
-  box-shadow: inset 1px 0 0 rgba(42, 122, 212, 0.08);
+  box-shadow: inset 1px 0 0 rgba(204, 34, 0, 0.06);
 }
 
 /* ── LOGO ── */
 .logo-header {
   padding: 20px 18px 16px 20px;
-  border-bottom: 1px solid var(--border-gold);
+  border-bottom: 1px solid var(--border-red);
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
   background: linear-gradient(
     135deg,
-    rgba(200, 152, 42, 0.04) 0%,
+    rgba(204, 34, 0, 0.05) 0%,
     transparent 60%
   );
 }
@@ -289,7 +288,7 @@ body::after {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(200, 152, 42, 0.06) 50%,
+    rgba(204, 34, 0, 0.05) 50%,
     transparent 100%
   );
   background-size: 200% 100%;
@@ -303,16 +302,16 @@ body::after {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0.6;
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
+  opacity: 0.5;
 }
 .logo {
   font-family: var(--font-hud);
   font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.18em;
-  color: var(--gold-bright);
-  text-shadow: 0 0 20px rgba(232, 184, 64, 0.3);
+  color: var(--steel-bright);
+  text-shadow: 0 0 20px rgba(216, 224, 232, 0.2);
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -329,7 +328,7 @@ body::after {
 }
 .logo-sub::before {
   content: "●";
-  color: var(--blue-bright);
+  color: var(--red-bright);
   font-size: 7px;
   animation: blink 2.5s ease-in-out infinite;
 }
@@ -361,14 +360,14 @@ body::after {
   position: relative;
 }
 .section-toggle:hover {
-  background: rgba(42, 122, 212, 0.04);
-  color: var(--silver-hi);
+  background: rgba(204, 34, 0, 0.04);
+  color: var(--steel-hi);
 }
 .section-toggle::before {
   content: "";
   width: 7px;
   height: 7px;
-  border: 1px solid var(--border-gold);
+  border: 1px solid var(--border-red);
   transform: rotate(45deg);
   flex-shrink: 0;
   opacity: 0.7;
@@ -421,7 +420,7 @@ body::after {
 }
 
 /* ═══════════════════════════════════════════════════
-   COMPONENT BUTTONS
+   COMPONENT BUTTONS — INDUSTRIAL
    ═══════════════════════════════════════════════════ */
 
 .btn {
@@ -452,7 +451,7 @@ body::after {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.05),
     transparent
   );
   pointer-events: none;
@@ -542,21 +541,21 @@ body::after {
   animation: pulse-ring 1.2s ease-out infinite;
 }
 
-/* ── MOTOR — steel blue ── */
+/* ── MOTOR — warning red ── */
 .btn-motor {
   background: linear-gradient(
     105deg,
-    rgba(58, 141, 232, 0.14) 0%,
-    rgba(58, 141, 232, 0.04) 100%
+    rgba(204, 34, 0, 0.16) 0%,
+    rgba(204, 34, 0, 0.05) 100%
   );
-  border-color: rgba(58, 141, 232, 0.22);
+  border-color: rgba(204, 34, 0, 0.28);
   border-left: 2px solid var(--c-motor);
-  color: #7ab4f0;
+  color: #e87060;
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
 }
 .btn-motor .btn-glyph {
-  background: rgba(58, 141, 232, 0.1);
-  color: #5a9ee0;
+  background: rgba(204, 34, 0, 0.12);
+  color: #cc4030;
 }
 .btn-motor .btn-tag {
   color: var(--c-motor);
@@ -564,13 +563,13 @@ body::after {
 .btn-motor:hover {
   background: linear-gradient(
     105deg,
-    rgba(58, 141, 232, 0.22) 0%,
-    rgba(58, 141, 232, 0.08) 100%
+    rgba(204, 34, 0, 0.26) 0%,
+    rgba(204, 34, 0, 0.1) 100%
   );
-  border-color: rgba(58, 141, 232, 0.5);
+  border-color: rgba(204, 34, 0, 0.6);
   box-shadow:
-    0 0 18px rgba(58, 141, 232, 0.16),
-    inset 0 0 16px rgba(58, 141, 232, 0.04);
+    0 0 18px rgba(204, 34, 0, 0.2),
+    inset 0 0 16px rgba(204, 34, 0, 0.05);
 }
 .btn-motor:hover .btn-glyph {
   animation:
@@ -578,21 +577,21 @@ body::after {
     glyph-pop 0s;
 }
 
-/* ── FRAME — crimson/steel ── */
+/* ── FRAME — steel grey ── */
 .btn-frame {
   background: linear-gradient(
     105deg,
-    rgba(160, 52, 40, 0.14) 0%,
-    rgba(160, 52, 40, 0.04) 100%
+    rgba(122, 128, 144, 0.14) 0%,
+    rgba(122, 128, 144, 0.04) 100%
   );
-  border-color: rgba(160, 52, 40, 0.22);
+  border-color: rgba(122, 128, 144, 0.22);
   border-left: 2px solid var(--c-frame);
-  color: #e08878;
+  color: #b0b8c4;
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
 }
 .btn-frame .btn-glyph {
-  background: rgba(160, 52, 40, 0.1);
-  color: #d06858;
+  background: rgba(122, 128, 144, 0.1);
+  color: #909aa8;
 }
 .btn-frame .btn-tag {
   color: var(--c-frame);
@@ -600,30 +599,30 @@ body::after {
 .btn-frame:hover {
   background: linear-gradient(
     105deg,
-    rgba(160, 52, 40, 0.22) 0%,
-    rgba(160, 52, 40, 0.08) 100%
+    rgba(122, 128, 144, 0.22) 0%,
+    rgba(122, 128, 144, 0.08) 100%
   );
-  border-color: rgba(160, 52, 40, 0.5);
+  border-color: rgba(122, 128, 144, 0.5);
   box-shadow:
-    0 0 18px rgba(160, 52, 40, 0.14),
-    inset 0 0 16px rgba(160, 52, 40, 0.04);
+    0 0 18px rgba(122, 128, 144, 0.14),
+    inset 0 0 16px rgba(122, 128, 144, 0.04);
 }
 
-/* ── TRIANGLE ── */
+/* ── TRIANGLE — light steel ── */
 .btn-triangle {
   background: linear-gradient(
     105deg,
-    rgba(192, 120, 40, 0.14) 0%,
-    rgba(192, 120, 40, 0.04) 100%
+    rgba(160, 168, 176, 0.12) 0%,
+    rgba(160, 168, 176, 0.04) 100%
   );
-  border-color: rgba(192, 120, 40, 0.22);
+  border-color: rgba(160, 168, 176, 0.2);
   border-left: 2px solid var(--c-tri);
-  color: #e0a860;
+  color: #c8d0d8;
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
 }
 .btn-triangle .btn-glyph {
-  background: rgba(192, 120, 40, 0.1);
-  color: #c88840;
+  background: rgba(160, 168, 176, 0.09);
+  color: #a8b0b8;
 }
 .btn-triangle .btn-tag {
   color: var(--c-tri);
@@ -631,30 +630,30 @@ body::after {
 .btn-triangle:hover {
   background: linear-gradient(
     105deg,
-    rgba(192, 120, 40, 0.22) 0%,
-    rgba(192, 120, 40, 0.08) 100%
+    rgba(160, 168, 176, 0.2) 0%,
+    rgba(160, 168, 176, 0.08) 100%
   );
-  border-color: rgba(192, 120, 40, 0.5);
+  border-color: rgba(160, 168, 176, 0.45);
   box-shadow:
-    0 0 18px rgba(192, 120, 40, 0.14),
-    inset 0 0 16px rgba(192, 120, 40, 0.04);
+    0 0 18px rgba(160, 168, 176, 0.12),
+    inset 0 0 16px rgba(160, 168, 176, 0.04);
 }
 
-/* ── SUPPORT ── */
+/* ── SUPPORT — gunmetal ── */
 .btn-support {
   background: linear-gradient(
     105deg,
-    rgba(58, 144, 88, 0.14) 0%,
-    rgba(58, 144, 88, 0.04) 100%
+    rgba(96, 104, 112, 0.14) 0%,
+    rgba(96, 104, 112, 0.04) 100%
   );
-  border-color: rgba(58, 144, 88, 0.22);
+  border-color: rgba(96, 104, 112, 0.22);
   border-left: 2px solid var(--c-sup);
-  color: #80c898;
+  color: #909aa4;
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
 }
 .btn-support .btn-glyph {
-  background: rgba(58, 144, 88, 0.1);
-  color: #60a878;
+  background: rgba(96, 104, 112, 0.1);
+  color: #707880;
 }
 .btn-support .btn-tag {
   color: var(--c-sup);
@@ -662,30 +661,30 @@ body::after {
 .btn-support:hover {
   background: linear-gradient(
     105deg,
-    rgba(58, 144, 88, 0.22) 0%,
-    rgba(58, 144, 88, 0.08) 100%
+    rgba(96, 104, 112, 0.22) 0%,
+    rgba(96, 104, 112, 0.08) 100%
   );
-  border-color: rgba(58, 144, 88, 0.5);
+  border-color: rgba(96, 104, 112, 0.5);
   box-shadow:
-    0 0 18px rgba(58, 144, 88, 0.14),
-    inset 0 0 16px rgba(58, 144, 88, 0.04);
+    0 0 18px rgba(96, 104, 112, 0.14),
+    inset 0 0 16px rgba(96, 104, 112, 0.04);
 }
 
-/* ── ATTACH TO SUPPORT ── */
+/* ── ATTACH TO SUPPORT — dark iron ── */
 .btn-frame-on-support {
   background: linear-gradient(
     105deg,
-    rgba(120, 72, 184, 0.14) 0%,
-    rgba(120, 72, 184, 0.04) 100%
+    rgba(80, 88, 96, 0.14) 0%,
+    rgba(80, 88, 96, 0.04) 100%
   );
-  border-color: rgba(120, 72, 184, 0.22);
+  border-color: rgba(80, 88, 96, 0.22);
   border-left: 2px solid var(--c-att);
-  color: #b090e0;
+  color: #808890;
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
 }
 .btn-frame-on-support .btn-glyph {
-  background: rgba(120, 72, 184, 0.1);
-  color: #9070c8;
+  background: rgba(80, 88, 96, 0.1);
+  color: #606870;
 }
 .btn-frame-on-support .btn-tag {
   color: var(--c-att);
@@ -693,30 +692,30 @@ body::after {
 .btn-frame-on-support:hover {
   background: linear-gradient(
     105deg,
-    rgba(120, 72, 184, 0.22) 0%,
-    rgba(120, 72, 184, 0.08) 100%
+    rgba(80, 88, 96, 0.22) 0%,
+    rgba(80, 88, 96, 0.08) 100%
   );
-  border-color: rgba(120, 72, 184, 0.5);
+  border-color: rgba(80, 88, 96, 0.5);
   box-shadow:
-    0 0 18px rgba(120, 72, 184, 0.14),
-    inset 0 0 16px rgba(120, 72, 184, 0.04);
+    0 0 18px rgba(80, 88, 96, 0.14),
+    inset 0 0 16px rgba(80, 88, 96, 0.04);
 }
 
-/* ── WHEEL ── */
+/* ── WHEEL — deep red ── */
 .btn-wheel {
   background: linear-gradient(
     105deg,
-    rgba(24, 154, 180, 0.14) 0%,
-    rgba(24, 154, 180, 0.04) 100%
+    rgba(192, 32, 16, 0.14) 0%,
+    rgba(192, 32, 16, 0.04) 100%
   );
-  border-color: rgba(24, 154, 180, 0.22);
+  border-color: rgba(192, 32, 16, 0.22);
   border-left: 2px solid var(--c-wheel);
-  color: #60d0e8;
+  color: #e06050;
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
 }
 .btn-wheel .btn-glyph {
-  background: rgba(24, 154, 180, 0.1);
-  color: #40b8d0;
+  background: rgba(192, 32, 16, 0.1);
+  color: #c04030;
 }
 .btn-wheel .btn-tag {
   color: var(--c-wheel);
@@ -724,13 +723,13 @@ body::after {
 .btn-wheel:hover {
   background: linear-gradient(
     105deg,
-    rgba(24, 154, 180, 0.22) 0%,
-    rgba(24, 154, 180, 0.08) 100%
+    rgba(192, 32, 16, 0.22) 0%,
+    rgba(192, 32, 16, 0.08) 100%
   );
-  border-color: rgba(24, 154, 180, 0.5);
+  border-color: rgba(192, 32, 16, 0.5);
   box-shadow:
-    0 0 18px rgba(24, 154, 180, 0.14),
-    inset 0 0 16px rgba(24, 154, 180, 0.04);
+    0 0 18px rgba(192, 32, 16, 0.16),
+    inset 0 0 16px rgba(192, 32, 16, 0.05);
 }
 .btn-wheel:hover .btn-glyph,
 .btn-wheel.active-mode .btn-glyph {
@@ -766,34 +765,34 @@ body::after {
 .btn-primary {
   background: linear-gradient(
     135deg,
-    rgba(200, 152, 42, 0.16) 0%,
-    rgba(200, 152, 42, 0.06) 100%
+    rgba(204, 34, 0, 0.18) 0%,
+    rgba(204, 34, 0, 0.07) 100%
   );
-  color: var(--gold-bright);
-  border-color: var(--gold-border);
+  color: var(--red-bright);
+  border-color: var(--red-border);
   font-family: var(--font-hud);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   border-left-width: 2px;
-  border-left-color: var(--gold);
+  border-left-color: var(--red);
 }
 .btn-primary:hover {
   background: linear-gradient(
     135deg,
-    rgba(200, 152, 42, 0.26) 0%,
-    rgba(200, 152, 42, 0.1) 100%
+    rgba(204, 34, 0, 0.3) 0%,
+    rgba(204, 34, 0, 0.12) 100%
   );
-  border-color: var(--gold);
+  border-color: var(--red);
   box-shadow:
-    0 0 20px var(--gold-glow),
-    inset 0 0 12px var(--gold-dim);
+    0 0 20px var(--red-glow),
+    inset 0 0 12px var(--red-dim);
   transform: translateX(2px);
 }
 
 .btn-secondary {
-  background: rgba(143, 168, 192, 0.05);
+  background: rgba(128, 144, 160, 0.05);
   color: var(--text-mid);
   border-color: var(--border);
   font-family: var(--font-hud);
@@ -805,8 +804,8 @@ body::after {
   border-left-color: var(--border-hi);
 }
 .btn-secondary:hover {
-  background: rgba(143, 168, 192, 0.09);
-  color: var(--silver-hi);
+  background: rgba(128, 144, 160, 0.09);
+  color: var(--steel-hi);
   border-color: var(--border-hi);
   transform: translateX(2px);
 }
@@ -814,17 +813,17 @@ body::after {
 /* ── VIEWPORT ── */
 .viewport {
   position: relative;
-  background: #060b14;
+  background: #0f0f0f;
   overflow: hidden;
 }
-/* Subtle aerospace grid overlay */
+/* Subtle industrial grid overlay */
 .viewport::before {
   content: "";
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(42, 122, 212, 0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(42, 122, 212, 0.028) 1px, transparent 1px);
+    linear-gradient(rgba(200, 200, 200, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 200, 200, 0.018) 1px, transparent 1px);
   background-size: 48px 48px;
   pointer-events: none;
   z-index: 0;
@@ -834,7 +833,7 @@ body::after {
   content: "";
   position: absolute;
   inset: 12px;
-  border: 1px solid rgba(200, 152, 42, 0.08);
+  border: 1px solid rgba(204, 34, 0, 0.07);
   clip-path: polygon(
     0 24px,
     24px 0,
@@ -872,9 +871,9 @@ canvas#app {
 }
 
 .sidebar-cam-btn {
-  background: rgba(200, 152, 42, 0.05);
-  border: 1px solid var(--border-gold);
-  color: var(--text-gold);
+  background: rgba(204, 34, 0, 0.05);
+  border: 1px solid var(--border-red);
+  color: #a04030;
   font-family: var(--font-mono);
   cursor: pointer;
   transition: all 0.15s ease;
@@ -894,7 +893,7 @@ canvas#app {
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(200, 152, 42, 0.06) 0%,
+    rgba(204, 34, 0, 0.07) 0%,
     transparent 60%
   );
   opacity: 0;
@@ -904,19 +903,19 @@ canvas#app {
   opacity: 1;
 }
 .sidebar-cam-btn:hover {
-  background: rgba(200, 152, 42, 0.12);
-  border-color: var(--gold);
-  color: var(--gold-bright);
+  background: rgba(204, 34, 0, 0.14);
+  border-color: var(--red);
+  color: var(--red-bright);
   transform: translateY(-1px);
-  box-shadow: 0 0 10px rgba(200, 152, 42, 0.18);
+  box-shadow: 0 0 10px rgba(204, 34, 0, 0.2);
 }
 .sidebar-cam-btn.active {
-  background: rgba(200, 152, 42, 0.14);
-  border-color: var(--gold);
-  color: var(--gold-bright);
+  background: rgba(204, 34, 0, 0.16);
+  border-color: var(--red);
+  color: var(--red-bright);
   box-shadow:
-    0 0 12px rgba(200, 152, 42, 0.22),
-    inset 0 0 8px rgba(200, 152, 42, 0.05);
+    0 0 12px rgba(204, 34, 0, 0.25),
+    inset 0 0 8px rgba(204, 34, 0, 0.05);
 }
 .sidebar-cam-btn.active::after {
   content: "";
@@ -925,8 +924,8 @@ canvas#app {
   left: 0;
   right: 0;
   height: 1.5px;
-  background: var(--gold);
-  box-shadow: 0 0 5px var(--gold);
+  background: var(--red);
+  box-shadow: 0 0 5px var(--red);
 }
 .sidebar-cam-icon {
   font-size: 14px;
@@ -960,14 +959,14 @@ canvas#app {
   right: 20px;
   z-index: 100;
   pointer-events: auto;
-  background: rgba(6, 11, 20, 0.95);
-  border: 1px solid var(--inst-color, #c8982a);
+  background: rgba(15, 15, 15, 0.96);
+  border: 1px solid var(--inst-color, #cc2200);
   clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow:
-    0 0 32px rgba(0, 0, 0, 0.7),
-    0 0 20px var(--inst-color, rgba(200, 152, 42, 0.12));
+    0 0 32px rgba(0, 0, 0, 0.8),
+    0 0 20px var(--inst-color, rgba(204, 34, 0, 0.14));
   animation:
     inst-slide-in 0.25s ease both,
     inst-border-pulse 2.5s ease-in-out infinite;
@@ -979,8 +978,8 @@ canvas#app {
   left: -1px;
   width: 18px;
   height: 18px;
-  border-top: 1.5px solid var(--inst-color, #c8982a);
-  border-left: 1.5px solid var(--inst-color, #c8982a);
+  border-top: 1.5px solid var(--inst-color, #cc2200);
+  border-left: 1.5px solid var(--inst-color, #cc2200);
   pointer-events: none;
 }
 .instruction-header {
@@ -989,7 +988,7 @@ canvas#app {
   gap: 10px;
   padding: 9px 16px 8px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.25);
 }
 .instruction-icon {
   font-size: 15px;
@@ -1099,14 +1098,14 @@ canvas#app {
   font-family: var(--font-mono);
   font-size: 10px;
   background: var(--bg-row);
-  border: 1px solid var(--border-gold);
+  border: 1px solid var(--border-red);
   padding: 1px 5px;
-  color: var(--gold-bright);
+  color: var(--red-bright);
 }
 .inst-tip {
-  background: rgba(200, 152, 42, 0.05);
-  border: 1px solid rgba(200, 152, 42, 0.15);
-  border-left: 2px solid var(--gold);
+  background: rgba(204, 34, 0, 0.05);
+  border: 1px solid rgba(204, 34, 0, 0.15);
+  border-left: 2px solid var(--red);
   padding: 5px 12px;
   font-family: var(--font-ui);
   font-size: 11px;
@@ -1120,7 +1119,7 @@ canvas#app {
   font-family: var(--font-hud);
   font-size: 8px;
   letter-spacing: 0.2em;
-  color: var(--gold);
+  color: var(--red);
   margin-right: 6px;
   vertical-align: middle;
 }
@@ -1144,7 +1143,7 @@ canvas#app {
 /* ── BASKET HEADER ── */
 .basket-header {
   padding: 18px 18px 14px 20px;
-  border-bottom: 1px solid var(--border-gold);
+  border-bottom: 1px solid var(--border-red);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1153,7 +1152,7 @@ canvas#app {
   overflow: hidden;
   background: linear-gradient(
     135deg,
-    rgba(200, 152, 42, 0.04) 0%,
+    rgba(204, 34, 0, 0.04) 0%,
     transparent 60%
   );
 }
@@ -1164,16 +1163,16 @@ canvas#app {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0.5;
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
+  opacity: 0.45;
 }
 .basket-title {
   font-family: var(--font-hud);
   font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: var(--gold-bright);
-  text-shadow: 0 0 16px rgba(232, 184, 64, 0.25);
+  color: var(--steel-bright);
+  text-shadow: 0 0 16px rgba(216, 224, 232, 0.15);
 }
 .basket-count {
   font-family: var(--font-mono);
@@ -1205,7 +1204,7 @@ canvas#app {
   padding: 8px 12px;
   background: var(--bg-row);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--gold);
+  border-left: 3px solid var(--red);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1222,7 +1221,7 @@ canvas#app {
 
 .basket-divider {
   height: 1px;
-  background: var(--border-gold);
+  background: var(--border-red);
   margin: 4px 0;
   position: relative;
 }
@@ -1233,7 +1232,7 @@ canvas#app {
   top: -9px;
   font-family: var(--font-mono);
   font-size: 8.5px;
-  color: var(--text-gold);
+  color: var(--text-red);
   letter-spacing: 0.15em;
   background: var(--bg-panel-r);
   padding: 0 4px;
@@ -1242,7 +1241,7 @@ canvas#app {
 /* ── BASKET FOOTER ── */
 .basket-footer {
   padding: 14px 18px;
-  border-top: 1px solid var(--border-gold);
+  border-top: 1px solid var(--border-red);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1256,8 +1255,8 @@ canvas#app {
 .price {
   font-family: var(--font-hud);
   font-size: 22px;
-  color: var(--gold-bright);
-  text-shadow: 0 0 16px var(--gold-glow);
+  color: var(--steel-bright);
+  text-shadow: 0 0 16px rgba(216, 224, 232, 0.2);
   letter-spacing: 0.06em;
 }
 
@@ -1309,9 +1308,9 @@ canvas#app {
   bottom: 48px;
   left: 18px;
   z-index: 50;
-  background: rgba(6, 11, 20, 0.94);
-  border: 1px solid rgba(200, 152, 42, 0.2);
-  border-left: 2px solid rgba(200, 152, 42, 0.45);
+  background: rgba(15, 15, 15, 0.95);
+  border: 1px solid rgba(204, 34, 0, 0.22);
+  border-left: 2px solid rgba(204, 34, 0, 0.5);
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -1338,7 +1337,7 @@ canvas#app {
   font-family: var(--font-mono);
   font-size: 8.5px;
   letter-spacing: 0.24em;
-  color: var(--gold);
+  color: var(--red);
   text-transform: uppercase;
   margin-bottom: 8px;
   display: flex;
@@ -1397,7 +1396,7 @@ canvas#app {
   line-height: 1.35;
 }
 .legend-text strong {
-  color: var(--silver-hi);
+  color: var(--steel-hi);
   font-weight: 700;
 }
 
@@ -1406,7 +1405,7 @@ canvas#app {
   top: 8px;
   right: 8px;
   background: none;
-  border: 1px solid rgba(200, 152, 42, 0.18);
+  border: 1px solid rgba(204, 34, 0, 0.2);
   color: var(--text-lo);
   font-size: 8px;
   width: 18px;
@@ -1420,9 +1419,9 @@ canvas#app {
   line-height: 1;
 }
 .legend-collapse-btn:hover {
-  color: var(--gold-bright);
-  border-color: var(--gold);
-  background: rgba(200, 152, 42, 0.07);
+  color: var(--red-bright);
+  border-color: var(--red);
+  background: rgba(204, 34, 0, 0.07);
 }
 
 /* Mode-aware legend highlighting */
@@ -1476,14 +1475,14 @@ canvas#app {
 }
 .idle-arrow-line {
   height: 1.5px;
-  background: linear-gradient(90deg, transparent, var(--gold));
+  background: linear-gradient(90deg, transparent, var(--red));
   width: 36px;
   flex-shrink: 0;
 }
 .idle-arrow-head {
   font-size: 16px;
-  color: var(--gold-bright);
-  filter: drop-shadow(0 0 5px var(--gold));
+  color: var(--red-bright);
+  filter: drop-shadow(0 0 5px var(--red));
   flex-shrink: 0;
   line-height: 1;
 }
@@ -1491,10 +1490,10 @@ canvas#app {
   font-family: var(--font-mono);
   font-size: 8.5px;
   letter-spacing: 0.14em;
-  color: var(--gold);
+  color: var(--red);
   text-transform: uppercase;
-  background: rgba(6, 11, 20, 0.92);
-  border: 1px solid rgba(200, 152, 42, 0.25);
+  background: rgba(15, 15, 15, 0.93);
+  border: 1px solid rgba(204, 34, 0, 0.28);
   padding: 3px 8px;
   white-space: nowrap;
   clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 0 100%);
@@ -1529,12 +1528,12 @@ canvas#app {
 .btn-save {
   background: linear-gradient(
     135deg,
-    rgba(200, 152, 42, 0.12) 0%,
-    rgba(200, 152, 42, 0.04) 100%
+    rgba(204, 34, 0, 0.14) 0%,
+    rgba(204, 34, 0, 0.05) 100%
   );
-  color: var(--gold-bright);
-  border-color: rgba(200, 152, 42, 0.28);
-  border-left: 2px solid var(--gold);
+  color: var(--red-bright);
+  border-color: rgba(204, 34, 0, 0.3);
+  border-left: 2px solid var(--red);
   font-family: var(--font-hud);
   font-size: 9.5px;
   font-weight: 700;
@@ -1544,23 +1543,23 @@ canvas#app {
 .btn-save:hover {
   background: linear-gradient(
     135deg,
-    rgba(200, 152, 42, 0.2) 0%,
-    rgba(200, 152, 42, 0.08) 100%
+    rgba(204, 34, 0, 0.24) 0%,
+    rgba(204, 34, 0, 0.1) 100%
   );
-  border-color: var(--gold);
-  box-shadow: 0 0 18px var(--gold-glow);
+  border-color: var(--red);
+  box-shadow: 0 0 18px var(--red-glow);
   transform: translateX(2px);
 }
 
 .btn-print {
   background: linear-gradient(
     135deg,
-    rgba(58, 144, 88, 0.1) 0%,
-    rgba(58, 144, 88, 0.03) 100%
+    rgba(128, 144, 160, 0.1) 0%,
+    rgba(128, 144, 160, 0.03) 100%
   );
-  color: #70b888;
-  border-color: rgba(58, 144, 88, 0.22);
-  border-left: 2px solid var(--c-sup);
+  color: var(--steel-hi);
+  border-color: rgba(128, 144, 160, 0.22);
+  border-left: 2px solid var(--steel);
   font-family: var(--font-hud);
   font-size: 9.5px;
   font-weight: 700;
@@ -1570,11 +1569,11 @@ canvas#app {
 .btn-print:hover {
   background: linear-gradient(
     135deg,
-    rgba(58, 144, 88, 0.18) 0%,
-    rgba(58, 144, 88, 0.07) 100%
+    rgba(128, 144, 160, 0.18) 0%,
+    rgba(128, 144, 160, 0.07) 100%
   );
-  border-color: rgba(58, 144, 88, 0.55);
-  box-shadow: 0 0 16px rgba(58, 144, 88, 0.16);
+  border-color: rgba(128, 144, 160, 0.55);
+  box-shadow: 0 0 16px rgba(128, 144, 160, 0.14);
   transform: translateX(2px);
 }
 
